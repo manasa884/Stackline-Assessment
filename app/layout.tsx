@@ -21,6 +21,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        {/** Redux store provider wrapper */}
         <StoreProvider>
           <Providers themeProps={{ attribute: "class" }}>
             <div className="relative flex flex-col h-screen">

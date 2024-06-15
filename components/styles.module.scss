@@ -5,3 +5,27 @@
 .logo {
   width: 120px;
 }
+
+.leftPanelCard {
+  height: 100%;
+  .cardHeader {
+    justify-content: center;
+    font-weight: bold;
+  }
+  .cardBody {
+    padding-top: 0;
+    text-align: center;
+    p {
+      font-size: small;
+      color: grey;
+      margin-bottom: 15px;
+    }
+    .tagsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      width: inherit;
+      gap: 10px;
+      padding: 10px;
+    }
+  }
+}

@@ -15,34 +15,28 @@ import styles from "./styles.module.scss";
 import { AppDispatch } from "@/lib/store";
 import { Graph } from "@/components/graph";
 import { Table } from "@/components/table";
+import { ProductSummaryCard } from "@/components/productSummaryCard";
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
   const product = useSelector(selectAllProducts)[0];
 
   useEffect(() => {
+    // fetch data on page load
     dispatch(fetchProductData());
   }, [dispatch]);
 
   return product ? (
     <div className={styles.parentContainer}>
       <div className={styles.leftPanelContainer}>
-        <Card className={styles.leftPanelCard}>
-          <CardBody>
-            <img alt="hello" height="auto" src={product.image} width="100%" />
-          </CardBody>
-          <CardHeader className={styles.cardHeader}>{product.title}</CardHeader>
-          <p>{product.subtitle}</p>
-          <Divider />
-          <div className={styles.tagsContainer}>
-            {product.tags.map((tag, i) => (
-              <Chip key={i} color="default" variant="bordered">
-                {tag}
-              </Chip>
-            ))}
-          </div>
-          <Divider />
-        </Card>
+        <ProductSummaryCard
+          data={{
+            image: product.image,
+            title: product.title,
+            subtitle: product.subtitle,
+            tags: product.tags,
+          }}
+        />
       </div>
       <div className={styles.rightPanelContainer}>
         <Card>
