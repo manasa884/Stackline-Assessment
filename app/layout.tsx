@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
-import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 
 import { Providers } from "./providers";
+import StoreProvider from "./StoreProvider";
 
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
@@ -21,14 +21,16 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
-            <Navbar />
-            <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-              {children}
-            </main>
-          </div>
-        </Providers>
+        <StoreProvider>
+          <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+            <div className="relative flex flex-col h-screen">
+              <Navbar />
+              <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+                {children}
+              </main>
+            </div>
+          </Providers>
+        </StoreProvider>
       </body>
     </html>
   );
