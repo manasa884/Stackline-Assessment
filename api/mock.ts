@@ -1,5 +1,13 @@
 import data from "./stackline_frontend_assessment_data_2021.json";
 
+export type SalesData = {
+  weekEnding: string;
+  retailSales: number;
+  wholesaleSales: number;
+  unitsSold: number;
+  retailerMargin: number;
+};
+
 export type ResponseData = {
   id: string;
   title: string;
@@ -14,13 +22,7 @@ export type ResponseData = {
   retailer: string;
   details: string[];
   tags: string[];
-  sales: {
-    weekEnding: string;
-    retailSales: number;
-    wholesaleSales: number;
-    unitsSold: number;
-    retailerMargin: number;
-  }[];
+  sales: SalesData[];
 }[];
 
 /**
