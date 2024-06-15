@@ -2,15 +2,6 @@
 import { Card, CardBody, CardHeader } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
 import { Chip } from "@nextui-org/chip";
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-  getKeyValue,
-} from "@nextui-org/table";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -23,6 +14,7 @@ import styles from "./styles.module.scss";
 
 import { AppDispatch } from "@/lib/store";
 import { Graph } from "@/components/graph";
+import { Table } from "@/components/table";
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
@@ -58,24 +50,7 @@ export default function Home() {
           <Graph data={product.sales} />
         </Card>
         <Card className={styles.tableCard}>
-          <Table>
-            <TableHeader>
-              {Object.keys(product.sales[0]).map((key) => (
-                <TableColumn key={key} allowsSorting>
-                  {key.charAt(0).toUpperCase() + key.slice(1)}
-                </TableColumn>
-              ))}
-            </TableHeader>
-            <TableBody items={product.sales}>
-              {(item) => (
-                <TableRow key={item.weekEnding}>
-                  {(columnKey) => (
-                    <TableCell>{getKeyValue(item, columnKey)}</TableCell>
-                  )}
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
+          <Table data={product.sales} />
         </Card>
       </div>
     </div>

@@ -27,6 +27,8 @@ const nextConfig = {
 
     return config;
   },
+  output: "export", // <=== enables static exports
+  basePath: "/stackline-assessment",
 };
 
 module.exports = nextConfig;
